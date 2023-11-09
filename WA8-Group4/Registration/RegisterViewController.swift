@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Office Hours App"
-        
+        navigationItem.hidesBackButton = true
         let loginPage = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(onLoginPage))
         registerView.btnCreateProfile.addTarget(self, action: #selector(triggerRegistration), for: .touchUpInside)
         navigationItem.rightBarButtonItem = loginPage
@@ -47,6 +47,7 @@ class RegisterViewController: UIViewController {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
+    
     @objc func onLoginPage() {
         let loginController = ViewController()
         navigationController?.popViewController(animated: true)
