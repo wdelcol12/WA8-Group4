@@ -7,9 +7,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 class RegisterViewController: UIViewController {
 
     let registerView = RegisterView()
+    
+    
+    
+    let database = Firestore.firestore()
     
     override func loadView() {
         view = registerView
@@ -17,7 +22,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Office Hours App"
+        title = "Messaging App"
         navigationItem.hidesBackButton = true
         let loginPage = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(onLoginPage))
         registerView.btnCreateProfile.addTarget(self, action: #selector(triggerRegistration), for: .touchUpInside)
@@ -58,10 +63,22 @@ class RegisterViewController: UIViewController {
         //MARK: display the progress indicator...
         //showActivityIndicator()
         //MARK: create a Firebase user with email and password...
+        
+        
+        
         if let name = registerView.name.text,
            let email = registerView.email.text,
            let password = registerView.password.text{
             //Validations....
+            
+            if password.count < 6 {
+                let alert = UIAlertController(title: "Registration Alert", message: "Password must be greater then 6 characters", preferredStyle: UIAlertController.Style.alert)
+
+                    // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:nil))
+                
+                self.present(alert, animated:true)
+            }
             Auth.auth().createUser(withEmail: email, password: password, completion: {result, error in
                 if error == nil{
                     //MARK: the user creation is successful...
@@ -69,6 +86,17 @@ class RegisterViewController: UIViewController {
                     
                     let alert = UIAlertController(title: "Registration Alert", message: "Successfully Registered", preferredStyle: UIAlertController.Style.alert)
 
+                    
+                    self.database.collection("users").document(name).setData([
+                      "name": name,
+                      "email": email,
+                    ]) { err in
+                      if let err = err {
+                        print("Error writing document: \(err)")
+                      } else {
+                        print("Document successfully written!")
+                      }
+                    }
                         // add an action (button)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                         
@@ -81,6 +109,11 @@ class RegisterViewController: UIViewController {
                 }else{
                     //MARK: there is a error creating the user...
                     print(error ?? "N/A")
+                    
+                    let alert = UIAlertController(title: "Registration Alert", message: "Please enter a valid email address", preferredStyle: UIAlertController.Style.alert)
+
+                        // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:nil))
                 }
             })
         } else {

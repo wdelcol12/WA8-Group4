@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class MessengerViewController: UIViewController {
 
     let msgView = MessengerView()
@@ -25,7 +25,15 @@ class MessengerViewController: UIViewController {
     }
     
     @objc func logout() {
-        
+        do {
+            try Auth.auth().signOut()
+            
+        }
+        catch {
+            print("already logged out")
+        }
+            UserDefaults.standard.removeObject(forKey: "userToken")
+            navigationController?.popToRootViewController(animated: true)
     }
 
 }

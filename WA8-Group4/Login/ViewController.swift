@@ -24,6 +24,12 @@ class ViewController: UIViewController {
         view = loginView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,14 +38,19 @@ class ViewController: UIViewController {
             if user == nil{
                 //MARK: not signed in...
                 self.currentUser = nil
-               
+                print("The user is not signed in")
+
                 
                 
             }else{
                 //MARK: the user is signed in...
                 self.currentUser = user
-               
+                print("The user is signed in")
                 
+                
+                UserDefaults.standard.set(user?.displayName, forKey: "userToken")
+                let messengerController = MessengerViewController()
+                self.navigationController?.pushViewController(messengerController,animated: false)
                 
             }
         }
@@ -66,16 +77,18 @@ class ViewController: UIViewController {
             if error == nil{
                 //MARK: the user creation is successful...
                 print("Successfully Signed in!")
+               
                 
-                
-                let alert = UIAlertController(title: "Login Alert", message: "Successfully Logged in! You may proeceed to the messenger page", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Login Alert", message: "Successfully Logged in!", preferredStyle: UIAlertController.Style.alert)
 
                     // add an action (button)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                     
-                    let messengerController = MessengerViewController()
-                    self.navigationController?.pushViewController(messengerController,animated: true)
+//                    let messengerController = MessengerViewController()
+//                    self.navigationController?.pushViewController(messengerController,animated: true)
                 }))
+               // print("Result is ", result)
+               // UserDefaults.standard.set(, forKey: "userToken")
 
                     // show the alert
                     self.present(alert, animated: true)
