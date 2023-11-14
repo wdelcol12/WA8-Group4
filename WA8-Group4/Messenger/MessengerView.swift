@@ -25,14 +25,21 @@ class MessengerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func setupElements() {
-        
+        email = UITextField()
+        email.font = UIFont.systemFont(ofSize: 20)
+        email.placeholder = "Loading..."
+        email.borderStyle = .roundedRect
+        email.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(email)
     }
     
     func setupLayout() {
         NSLayoutConstraint.activate(
                    [
-    
+                        email.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
+                        email.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor)
                         
                    ]
        )

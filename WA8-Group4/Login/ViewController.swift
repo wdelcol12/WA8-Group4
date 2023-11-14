@@ -38,17 +38,12 @@ class ViewController: UIViewController {
             if user == nil{
                 //MARK: not signed in...
                 self.currentUser = nil
-                print("The user is not signed in")
 
-                
-                
             }else{
                 //MARK: the user is signed in...
                 self.currentUser = user
-                print("The user is signed in")
                 
-                
-                UserDefaults.standard.set(user?.displayName, forKey: "userToken")
+                UserDefaults.standard.set(user?.email, forKey: "userToken")
                 let messengerController = MessengerViewController()
                 self.navigationController?.pushViewController(messengerController,animated: false)
                 
