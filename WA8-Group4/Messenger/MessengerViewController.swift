@@ -15,7 +15,6 @@ class MessengerViewController: UIViewController {
     let database = Firestore.firestore()
 //    var friends: [Friend] = [] // Assuming friends is an array of strings
     var friends: [String] = [] // Assuming friends is an array of strings
-
     override func loadView() {
         view = msgView
     }
@@ -71,6 +70,33 @@ class MessengerViewController: UIViewController {
         chatViewController.chatSelected = name
         navigationController?.pushViewController(chatViewController, animated: true)
     }
+    
+    @objc func loadFriends() {
+        let userCollections = database.collection("users")
+        var friends: [String] = [] // Assuming friends is an array of strings
+
+        userCollections.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let name = data["name"] as? String {
+                        print("Hahaha: ", data["email"], UserDefaults.standard.string(forKey: "userToken"))
+                        if(data["email"] as? String != UserDefaults.standard.string(forKey: "userToken")) {
+                            friends.append(name)
+                        }
+                        
+                    }
+                }
+
+                // Now you can use the 'friends' array as needed
+                print("Friends: \(friends)")
+                self.msgView.email.text = friends.joined()
+            }
+        }
+    }
+
     
     @objc func logout() {
         do {
