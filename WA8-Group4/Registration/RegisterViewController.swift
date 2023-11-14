@@ -60,12 +60,7 @@ class RegisterViewController: UIViewController {
 
     
     func registerNewAccount(){
-        //MARK: display the progress indicator...
-        //showActivityIndicator()
-        //MARK: create a Firebase user with email and password...
-        
-        
-        
+
         if let name = registerView.name.text,
            let email = registerView.email.text,
            let password = registerView.password.text{
@@ -86,8 +81,7 @@ class RegisterViewController: UIViewController {
                     
                     let alert = UIAlertController(title: "Registration Alert", message: "Successfully Registered", preferredStyle: UIAlertController.Style.alert)
 
-                    
-                    self.database.collection("users").document(name).setData([
+                    self.database.collection("users").document(email).setData([
                       "name": name,
                       "email": email,
                     ]) { err in
