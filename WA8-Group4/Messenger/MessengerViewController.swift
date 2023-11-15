@@ -70,6 +70,7 @@ class MessengerViewController: UIViewController {
         chatViewController.chatSelected = name
         navigationController?.pushViewController(chatViewController, animated: true)
     }
+
     
     @objc func logout() {
         do {

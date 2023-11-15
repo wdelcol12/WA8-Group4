@@ -11,8 +11,6 @@ import UIKit
 class MessengerView: UIView {
     
     var labelLoggedInName: UILabel!
-    
-    
     var btnLogin: UIButton!
     var tableViewMessages: UITableView!
     
@@ -21,25 +19,13 @@ class MessengerView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         
-        setupElements()
         setupLoggedInName()
-        
         setupTableViewContacts()
-        
         setupLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupElements() {
-        //        email = UITextField()
-        //        email.font = UIFont.systemFont(ofSize: 20)
-        //        email.placeholder = "Loading..."
-        //        email.borderStyle = .roundedRect
-        //        email.translatesAutoresizingMaskIntoConstraints = false
-        //        self.addSubview(email)
     }
     
     func setupLoggedInName(){
@@ -71,6 +57,7 @@ class MessengerView: UIView {
             ]
         )
     }
+    
 }
 
 

@@ -8,13 +8,11 @@
 import UIKit
 
 class MessagesTableViewCell: UITableViewCell {
-
+    
     var wrapperCellView: UIView!
     var labelName: UILabel!
     var labelLastMessage: UILabel!
     var labelTime: UILabel!
-    var labelEmail: UILabel! //remove
-
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,7 +21,6 @@ class MessagesTableViewCell: UITableViewCell {
         setupLabelName()
         setupLabelLastMessage()
         setupLabelTime()
-        setupLabelEmail() //remove
         
         initConstraints()
     }
@@ -40,7 +37,7 @@ class MessagesTableViewCell: UITableViewCell {
         wrapperCellView.layer.cornerRadius = 6.0
         wrapperCellView.layer.shadowColor = UIColor.gray.cgColor
         wrapperCellView.layer.shadowOffset = .zero
-        wrapperCellView.layer.shadowRadius = 4.0
+        wrapperCellView.layer.shadowRadius = 2.0
         wrapperCellView.layer.shadowOpacity = 0.4
         wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(wrapperCellView)
@@ -52,14 +49,7 @@ class MessagesTableViewCell: UITableViewCell {
         labelName.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(labelName)
     }
-    
-    func setupLabelEmail(){
-        labelEmail = UILabel()
-        labelEmail.font = UIFont.boldSystemFont(ofSize: 20)
-        labelEmail.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelEmail)
-    }
-    
+ 
     func setupLabelLastMessage(){
         labelLastMessage = UILabel()
         labelLastMessage.font = UIFont.boldSystemFont(ofSize: 14)
@@ -76,45 +66,39 @@ class MessagesTableViewCell: UITableViewCell {
     
     func initConstraints(){
         NSLayoutConstraint.activate([
-            wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor,constant: 10),
-            wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
-            wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            
+            wrapperCellView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            wrapperCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            wrapperCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            wrapperCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 16),
-            labelName.heightAnchor.constraint(equalToConstant: 20),
-            labelName.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+            labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
+            labelName.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -8),
             
-            labelLastMessage.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 2),
+            labelLastMessage.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 4),
             labelLastMessage.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
-            labelLastMessage.heightAnchor.constraint(equalToConstant: 16),
-            labelLastMessage.widthAnchor.constraint(lessThanOrEqualTo: labelName.widthAnchor),
+            labelLastMessage.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -8),
+
+            labelTime.topAnchor.constraint(equalTo: labelLastMessage.bottomAnchor, constant: 4),
+            labelTime.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -8),
+            labelTime.bottomAnchor.constraint(equalTo: wrapperCellView.bottomAnchor, constant: -8),
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 82)
             
-//            labelTime.topAnchor.constraint(equalTo: labelLastMessage.bottomAnchor, constant: 2),
-//            labelTime.leadingAnchor.constraint(equalTo: labelLastMessage.leadingAnchor),
-//            labelTime.heightAnchor.constraint(equalToConstant: 16),
-//            labelTime.widthAnchor.constraint(lessThanOrEqualTo: labelName.widthAnchor),
             
-            labelEmail.topAnchor.constraint(equalTo: labelLastMessage.bottomAnchor, constant: 2),
-            labelEmail.leadingAnchor.constraint(equalTo: labelLastMessage.leadingAnchor),
-            labelEmail.heightAnchor.constraint(equalToConstant: 16),
-            labelEmail.widthAnchor.constraint(lessThanOrEqualTo: labelName.widthAnchor),
-            
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 72)
         ])
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
-
+    
+    
 }

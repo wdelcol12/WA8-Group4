@@ -16,8 +16,8 @@ extension MessengerViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewMessagesID, for: indexPath) as! MessagesTableViewCell
         cell.labelName.text = friends[indexPath.row]
-        cell.labelEmail.text = friends[indexPath.row]
-        cell.labelTime.text = "\(friends[indexPath.row])"
+        cell.labelLastMessage.text = friends[indexPath.row]
+        cell.labelTime.text = (friends[indexPath.row])
         return cell
     }
     
