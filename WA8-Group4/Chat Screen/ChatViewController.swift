@@ -22,9 +22,13 @@ class ChatViewController: UIViewController {
         title = chatSelected
         // Do any additional setup after loading the view.
 //        view.
+        
+        chatView.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
     
-
+    @objc func sendMessage() {
+        chatView.messageInputTextField.text = ""
+    }
     /*
     // MARK: - Navigation
 
