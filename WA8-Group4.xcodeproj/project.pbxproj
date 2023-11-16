@@ -51,7 +51,7 @@
 		3BB933CA2AF9BB0B008490FC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933C92AF9BB0B008490FC /* RegisterView.swift */; };
 		3BB933CE2AF9BB38008490FC /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */; };
 		3BB933D02AF9BB44008490FC /* MessengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CF2AF9BB44008490FC /* MessengerView.swift */; };
-		4F2DA5702B046D6500EED35E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F2DA56F2B046D6500EED35E /* GoogleService-Info.plist */; };
+		A940E4FC2B05A014007DBB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +74,7 @@
 		3BB933C92AF9BB0B008490FC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		3BB933CF2AF9BB44008490FC /* MessengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerView.swift; sourceTree = "<group>"; };
-		4F2DA56F2B046D6500EED35E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4F2DA5712B046D7500EED35E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +118,6 @@
 		18F16A5C2B031D740011F994 /* Chat Screen */ = {
 			isa = PBXGroup;
 			children = (
-				4F2DA56F2B046D6500EED35E /* GoogleService-Info.plist */,
 				18F16A5A2B031D6F0011F994 /* ChatViewController.swift */,
 				18F16A5D2B031D8A0011F994 /* ChatView.swift */,
 			);
@@ -156,7 +154,7 @@
 				3BB933672AF9B7CD008490FC /* Info.plist */,
 				18F16A542B0312FE0011F994 /* Config.swift */,
 				18F16A582B0316640011F994 /* Friends.swift */,
-				4F2DA5712B046D7500EED35E /* GoogleService-Info.plist */,
+				A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */,
 				18F16A5C2B031D740011F994 /* Chat Screen */,
 			);
 			path = "WA8-Group4";
@@ -282,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB933662AF9B7CD008490FC /* LaunchScreen.storyboard in Resources */,
-				4F2DA5702B046D6500EED35E /* GoogleService-Info.plist in Resources */,
+				A940E4FC2B05A014007DBB9F /* GoogleService-Info.plist in Resources */,
 				3BB933632AF9B7CD008490FC /* Assets.xcassets in Resources */,
 				3BB933612AF9B7CC008490FC /* Main.storyboard in Resources */,
 			);
