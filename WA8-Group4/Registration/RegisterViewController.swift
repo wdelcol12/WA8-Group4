@@ -95,7 +95,11 @@ class RegisterViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                         
                         let messengerController = MessengerViewController()
-                        self.navigationController?.pushViewController(messengerController,animated: true)
+                        //self.navigationController?.pushViewController(messengerController,animated: true)
+                        
+                        let viewController = ViewController()
+                        
+                       // viewController.navigationController.viewControllers = [NSArray arrayWithObject: messengerController];
                     }))
 
                         // show the alert
@@ -132,7 +136,8 @@ class RegisterViewController: UIViewController {
                 //self.hideActivityIndicator()
                 
                 //MARK: pop the current controller...
-                self.navigationController?.popViewController(animated: true)
+                let messengerController = MessengerViewController()
+                //self.navigationController?.pushViewController(messengerController,animated: false)
             }else{
                 //MARK: there was an error updating the profile...
                 print("Error occured: \(String(describing: error))")
