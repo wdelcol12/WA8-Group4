@@ -39,6 +39,7 @@ class LoginView: UIView {
         email = UITextField()
         email.font = UIFont.systemFont(ofSize: 20)
         email.placeholder = "Email"
+        email.keyboardType = .emailAddress
         email.borderStyle = .roundedRect
         email.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(email)

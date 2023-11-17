@@ -13,10 +13,12 @@ struct Friend: Codable{
     var name: String
     var lastMessage: String
     var time: String
+    var email: String
     
-    init(name: String, lastMessage: String, time: String) {
+    init(name: String, lastMessage: String, time: String, email: String) {
         self.name = name
         self.lastMessage = lastMessage
         self.time = time
+        self.email = email
     }
 }

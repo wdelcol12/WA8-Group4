@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
     
     let chatView = ChatView()
-    var chatSelected:String!
-    
+    var selectedFriendName:String!
+    var selectedFriendEmail:String!
+    let database = Firestore.firestore()
+    let helperObj = DbHelper()
     override func loadView() {
         view = chatView
     }
@@ -19,24 +23,29 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = chatSelected
-        // Do any additional setup after loading the view.
-//        view.
+        title = selectedFriendName
         
         chatView.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
     
     @objc func sendMessage() {
+        let msgToSend = chatView.messageInputTextField.text!
+        
+        let senderUser = UserDefaults.standard.string(forKey: "userToken")
+        let receipentUser = selectedFriendEmail
+        
+        let chatCollection = database.collection("chats")
+        let userCollection = database.collection("users")
+        
+        let chatID = helperObj.createChatDocumentID(user1: senderUser!, user2: receipentUser!)
+        
+        helperObj.addChatIDinUserCollection(senderUser: senderUser!, receipentUser: receipentUser!, chatID: chatID)
+        
+        helperObj.addChatIDinUserCollection(senderUser: receipentUser!, receipentUser: senderUser!, chatID: chatID)
+        
+        helperObj.addMessages(chatID: chatID, senderUser: senderUser!, receipentUser: receipentUser!, textMsg: msgToSend)
+
         chatView.messageInputTextField.text = ""
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

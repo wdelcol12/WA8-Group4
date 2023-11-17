@@ -82,8 +82,8 @@ class RegisterViewController: UIViewController {
                     let alert = UIAlertController(title: "Registration Alert", message: "Successfully Registered", preferredStyle: UIAlertController.Style.alert)
 
                     self.database.collection("users").document(email).setData([
-                      "name": name,
-                      "email": email,
+                        "name": name.lowercased(),
+                        "email": email.lowercased(),
                     ]) { err in
                       if let err = err {
                         print("Error writing document: \(err)")
@@ -142,16 +142,6 @@ class RegisterViewController: UIViewController {
 }
 
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 
 

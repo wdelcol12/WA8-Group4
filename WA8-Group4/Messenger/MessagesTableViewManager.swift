@@ -25,8 +25,6 @@ extension MessengerViewController: UITableViewDelegate, UITableViewDataSource{
         // Get the selected cell or data
         let selectedChat = self.friends[indexPath.row]
 
-        // Perform navigation to a new screen
-        print(selectedChat)
         openChatWindow(name: selectedChat)
     }
 }

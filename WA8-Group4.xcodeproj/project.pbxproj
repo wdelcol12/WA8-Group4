@@ -52,6 +52,7 @@
 		3BB933CE2AF9BB38008490FC /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */; };
 		3BB933D02AF9BB44008490FC /* MessengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CF2AF9BB44008490FC /* MessengerView.swift */; };
 		A940E4FC2B05A014007DBB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */; };
+		A953378A2B06DB920024C25A /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95337892B06DB920024C25A /* DbHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		3BB933CF2AF9BB44008490FC /* MessengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerView.swift; sourceTree = "<group>"; };
 		A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A95337892B06DB920024C25A /* DbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		3BB9334D2AF9B7CB008490FC = {
 			isa = PBXGroup;
 			children = (
+				A95337892B06DB920024C25A /* DbHelper.swift */,
 				3BB933582AF9B7CC008490FC /* WA8-Group4 */,
 				3BB933572AF9B7CC008490FC /* Products */,
 			);
@@ -306,6 +309,7 @@
 				18F16A5B2B031D6F0011F994 /* ChatViewController.swift in Sources */,
 				18F16A552B0312FE0011F994 /* Config.swift in Sources */,
 				18F16A532B0312830011F994 /* MessagesTableViewCell.swift in Sources */,
+				A953378A2B06DB920024C25A /* DbHelper.swift in Sources */,
 				3BB9335C2AF9B7CC008490FC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
