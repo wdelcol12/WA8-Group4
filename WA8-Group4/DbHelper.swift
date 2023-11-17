@@ -38,7 +38,7 @@ class DbHelper {
                    
                 }
                 print("Done")
-                print(msgArray[0].text)
+//                print(msgArray[0].text)
                 completion(msgArray) // Return the fetched messages via completion handler
             }
         }
