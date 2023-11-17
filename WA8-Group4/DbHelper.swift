@@ -17,6 +17,34 @@ class DbHelper {
         return combinedString
     }
     
+    func getMessages(chatID: String, completion: @escaping ([Message]?) -> Void) {
+        let chatCollection = database.collection("chats")
+        var msgArray: [Message] = []
+        
+        chatCollection.document(chatID).collection("messages").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error fetching documents: \(error)")
+                completion(nil) // Notify completion handler about the error
+            } else {
+                guard let snapshot = snapshot else {
+                    completion(nil)
+                    return
+                }
+                
+                for document in snapshot.documents {
+                        let message = Message(recipient: document["recipient"] as! String, sender: document["sender"] as! String, text: document["text"] as! String, timestamp: document["timestamp"] as! String)
+                        msgArray.append(message)
+                        
+                   
+                }
+                print("Done")
+                print(msgArray[0].text)
+                completion(msgArray) // Return the fetched messages via completion handler
+            }
+        }
+    }
+
+    
     func addMessages(chatID: String, senderUser: String, receipentUser: String, textMsg: String) {
         let chatCollection = database.collection("chats")
         
@@ -28,7 +56,7 @@ class DbHelper {
         
         chatCollection.document(chatID).collection("messages").document().setData([
             "sender": senderUser,
-            "receipent": receipentUser,
+            "recipient": receipentUser,
             "text": textMsg,
             "timestamp": formattedDate]){ err in
                 if let err = err {

@@ -16,6 +16,8 @@ class ChatViewController: UIViewController {
     var selectedFriendEmail:String!
     let database = Firestore.firestore()
     let helperObj = DbHelper()
+    var msgArray: [Message] = []
+    
     override func loadView() {
         view = chatView
     }
@@ -26,6 +28,29 @@ class ChatViewController: UIViewController {
         title = selectedFriendName
         
         chatView.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        
+        loadMessages()
+    }
+    
+    @objc func loadMessages() {
+        let senderUser = UserDefaults.standard.string(forKey: "userToken")
+        let receipentUser = selectedFriendEmail
+        
+        let chatID = helperObj.createChatDocumentID(user1: senderUser!, user2: receipentUser!)
+        
+        helperObj.getMessages(chatID: chatID) { (messages) in
+            if let messageArray = messages {
+                for msg in messageArray {
+                    self.msgArray.append(msg)
+                }
+                print("Hello: ")
+                print(self.msgArray)
+                
+//                DispatchQueue.main.async {
+//                               self.tableView.reloadData() // Reload table view data
+//                           }
+            }
+        }
     }
     
     @objc func sendMessage() {
@@ -33,9 +58,6 @@ class ChatViewController: UIViewController {
         
         let senderUser = UserDefaults.standard.string(forKey: "userToken")
         let receipentUser = selectedFriendEmail
-        
-        let chatCollection = database.collection("chats")
-        let userCollection = database.collection("users")
         
         let chatID = helperObj.createChatDocumentID(user1: senderUser!, user2: receipentUser!)
         
