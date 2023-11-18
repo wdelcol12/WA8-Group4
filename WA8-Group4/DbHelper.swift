@@ -23,7 +23,6 @@ class DbHelper {
         
         chatCollection.getDocuments { (snapshot, error) in
             if let error = error {
-                print("Error fetching documents: \(error)")
                 completion(nil) // Notify completion handler about the error
             } else {
                 guard let snapshot = snapshot else {
@@ -105,7 +104,6 @@ class DbHelper {
                 }
             } else {
                 // 'chats' field does not exist or is not an array
-                print("'chats' field does not exist or is not an array")
                 userCollection.document(senderUser).updateData(["chats": [chatID]]) { error in
                     if let error = error {
                         print("Error updating document: \(error)")

@@ -71,19 +71,12 @@ class ViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password, completion: {result, error in
             if error == nil{
                 //MARK: the user creation is successful...
-                print("Successfully Signed in!")
-               
-                
                 let alert = UIAlertController(title: "Login Alert", message: "Successfully Logged in!", preferredStyle: UIAlertController.Style.alert)
 
                     // add an action (button)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                    
-//                    let messengerController = MessengerViewController()
-//                    self.navigationController?.pushViewController(messengerController,animated: true)
                 }))
-               // print("Result is ", result)
-               // UserDefaults.standard.set(, forKey: "userToken")
+
 
                     // show the alert
                     self.present(alert, animated: true)
@@ -99,7 +92,6 @@ class ViewController: UIViewController {
 
                     // show the alert
                     self.present(alert, animated: true)
-               // print(error ?? "N/A")
             }
         })
     }

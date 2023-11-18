@@ -36,8 +36,13 @@ class MessengerViewController: UIViewController {
         //MARK: removing the separator line...
         msgView.tableViewMessages.separatorStyle = .none
         
-        
+//        loadFriends()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadFriends()
+        // Other code to refresh or update the view can go here
     }
     
     @objc func loadFriends() {
@@ -58,12 +63,12 @@ class MessengerViewController: UIViewController {
                         
                     }
                 }
-                self.msgView.tableViewMessages.reloadData()
             }
         }
     }
     
     @objc func createFriend(name: String, email: String){
+        self.friends.removeAll()
         let receipentUser = email
         let chatID = self.helperObj.createChatDocumentID(user1: self.senderUser, user2: receipentUser)
         
@@ -75,33 +80,35 @@ class MessengerViewController: UIViewController {
                 for msg in messageArray {
                     msgArray.append(msg)
                 }
-                print("Hello: ")
-                print(msgArray)
+                var lastMessage: String?
+                var timestamp: String?
+                
+                if let last = msgArray.last {
+                    lastMessage = last.text
+                    timestamp = last.timestamp
+                    // Use the lastMessage here
+                } else {
+                    // The array is empty
+                    lastMessage = ""
+                    timestamp = ""
+                }
+
+                if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
+                    let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
+                    print("Check: ", lastMessageText)
+                    self.friends.append(friend)
+
+                } else {
+                    // Handle the case where lastMessageText or lastMessageTimestamp is nil
+                    print("No last message available")
+                }
+                // Sort the friends array based on timestamp
+                self.friends.sort { (friend1, friend2) -> Bool in
+                    // Assuming timestamp is a String in the format of a date
+                    return friend1.time > friend2.time
+                }
+                self.msgView.tableViewMessages.reloadData()
             }
-        }
-        
-        var lastMessage: String?
-        var timestamp: String?
-        
-        if let last = msgArray.last {
-            lastMessage = last.text
-            timestamp = last.timestamp
-            // Use the lastMessage here
-            print("Last Message: \(String(describing: lastMessage))")
-        } else {
-            // The array is empty
-            lastMessage = ""
-            timestamp = ""
-        }
-
-        if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
-            let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
-            print("Friend Object: \(friend)")
-            self.friends.append(friend)
-
-        } else {
-            // Handle the case where lastMessageText or lastMessageTimestamp is nil
-            print("No last message available")
         }
     }
     

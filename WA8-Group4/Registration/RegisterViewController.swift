@@ -46,7 +46,6 @@ class RegisterViewController: UIViewController {
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        print(email)
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -106,7 +105,6 @@ class RegisterViewController: UIViewController {
                         self.present(alert, animated: true)
                 }else{
                     //MARK: there is a error creating the user...
-                    print(error ?? "N/A")
                     
                     let alert = UIAlertController(title: "Registration Alert", message: "Please enter a valid email address", preferredStyle: UIAlertController.Style.alert)
 

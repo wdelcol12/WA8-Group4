@@ -50,10 +50,6 @@ class ChatViewController: UIViewController {
                 
                 self.chatView.contentWrapper.reloadData()
                 self.scrollToBottom()
-//                DispatchQueue.main.async {
-//                    print("yes!")
-//                    self.chatView.contentWrapper.reloadData()// Reload table view data
-//               }
             }
         }
     }
