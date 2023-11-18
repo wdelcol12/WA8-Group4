@@ -51,6 +51,7 @@
 		3BB933CA2AF9BB0B008490FC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933C92AF9BB0B008490FC /* RegisterView.swift */; };
 		3BB933CE2AF9BB38008490FC /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */; };
 		3BB933D02AF9BB44008490FC /* MessengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB933CF2AF9BB44008490FC /* MessengerView.swift */; };
+		4F2151442B083BBB00222DE8 /* ChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2151432B083BBB00222DE8 /* ChatCellView.swift */; };
 		A9903F0B2B07F67D00857195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */; };
 		A9903F0E2B07F74000857195 /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9903F0D2B07F74000857195 /* DbHelper.swift */; };
 		A9903F102B07F8B100857195 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9903F0F2B07F8B100857195 /* Message.swift */; };
@@ -76,6 +77,7 @@
 		3BB933C92AF9BB0B008490FC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		3BB933CD2AF9BB38008490FC /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		3BB933CF2AF9BB44008490FC /* MessengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerView.swift; sourceTree = "<group>"; };
+		4F2151432B083BBB00222DE8 /* ChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellView.swift; sourceTree = "<group>"; };
 		A940E4FB2B05A014007DBB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9903F0D2B07F74000857195 /* DbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
 		A9903F0F2B07F8B100857195 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				18F16A5A2B031D6F0011F994 /* ChatViewController.swift */,
 				18F16A5D2B031D8A0011F994 /* ChatView.swift */,
+				4F2151432B083BBB00222DE8 /* ChatCellView.swift */,
 			);
 			path = "Chat Screen";
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				18F16A592B0316640011F994 /* Friends.swift in Sources */,
 				3BB933C62AF9BAE1008490FC /* LoginView.swift in Sources */,
 				18F16A5B2B031D6F0011F994 /* ChatViewController.swift in Sources */,
+				4F2151442B083BBB00222DE8 /* ChatCellView.swift in Sources */,
 				18F16A552B0312FE0011F994 /* Config.swift in Sources */,
 				18F16A532B0312830011F994 /* MessagesTableViewCell.swift in Sources */,
 				A9903F102B07F8B100857195 /* Message.swift in Sources */,
