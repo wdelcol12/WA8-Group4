@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1A977706-2372-4CCC-8D92-5BAA45DB302D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E5F8F13-5E1F-4642-9993-70C282C25D6F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WA8-Group4/Messenger/MessengerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "createFriend(name:email:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2E5F8F13-5E1F-4642-9993-70C282C25D6F - b691fad7fa6b5076"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WA8_Group4.MessengerViewController.createFriend(name: Swift.String, email: Swift.String) -&gt; ()"
+                  moduleName = "WA8-Group4"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavikbhatt/Desktop/iOS/WA8-Group4/WA8-Group4/Messenger/MessengerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  uuid = "2E5F8F13-5E1F-4642-9993-70C282C25D6F - 8ff251b28565b875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;WA8_Group4.Message&gt;&gt;) -&gt; () in WA8_Group4.MessengerViewController.createFriend(name: Swift.String, email: Swift.String) -&gt; ()"
+                  moduleName = "WA8-Group4"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavikbhatt/Desktop/iOS/WA8-Group4/WA8-Group4/Messenger/MessengerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4A48A3C-EE4A-4606-969A-2D38BDC5DFA0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WA8-Group4/Messenger/MessengerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "createFriend(name:email:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A4A48A3C-EE4A-4606-969A-2D38BDC5DFA0 - 8ff251b28565b93b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;WA8_Group4.Message&gt;&gt;) -&gt; () in WA8_Group4.MessengerViewController.createFriend(name: Swift.String, email: Swift.String) -&gt; ()"
+                  moduleName = "WA8-Group4"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavikbhatt/Desktop/iOS/WA8-Group4/WA8-Group4/Messenger/MessengerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1088">
+               </Location>
+               <Location
+                  uuid = "A4A48A3C-EE4A-4606-969A-2D38BDC5DFA0 - 8ff251b28565b93b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;WA8_Group4.Message&gt;&gt;) -&gt; () in WA8_Group4.MessengerViewController.createFriend(name: Swift.String, email: Swift.String) -&gt; ()"
+                  moduleName = "WA8-Group4"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavikbhatt/Desktop/iOS/WA8-Group4/WA8-Group4/Messenger/MessengerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

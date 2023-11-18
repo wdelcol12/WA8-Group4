@@ -73,35 +73,36 @@ class MessengerViewController: UIViewController {
         self.helperObj.getMessages(chatID: chatID) { (messages) in
             if let messageArray = messages {
                 for msg in messageArray {
+                    print("should be here")
                     msgArray.append(msg)
                 }
                 print("Hello: ")
                 print(msgArray)
+                var lastMessage: String?
+                var timestamp: String?
+                
+                if let last = msgArray.last {
+                    lastMessage = last.text
+                    timestamp = last.timestamp
+                    // Use the lastMessage here
+                    print("Last Message: \(String(describing: lastMessage))")
+                } else {
+                    // The array is empty
+                    lastMessage = ""
+                    timestamp = ""
+                }
+
+                if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
+                    let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
+                    print("Friend Object: \(friend)")
+                    self.friends.append(friend)
+
+                } else {
+                    // Handle the case where lastMessageText or lastMessageTimestamp is nil
+                    print("No last message available")
+                }
+                self.msgView.tableViewMessages.reloadData()
             }
-        }
-        
-        var lastMessage: String?
-        var timestamp: String?
-        
-        if let last = msgArray.last {
-            lastMessage = last.text
-            timestamp = last.timestamp
-            // Use the lastMessage here
-            print("Last Message: \(String(describing: lastMessage))")
-        } else {
-            // The array is empty
-            lastMessage = ""
-            timestamp = ""
-        }
-
-        if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
-            let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
-            print("Friend Object: \(friend)")
-            self.friends.append(friend)
-
-        } else {
-            // Handle the case where lastMessageText or lastMessageTimestamp is nil
-            print("No last message available")
         }
     }
     
