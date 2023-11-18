@@ -16,7 +16,7 @@ class ChatViewController: UIViewController {
     var selectedFriendEmail:String!
     let database = Firestore.firestore()
     let helperObj = DbHelper()
-    var msgArray: [Message] = []
+    var msgArray = [Message]()
     
     override func loadView() {
         view = chatView
@@ -28,8 +28,12 @@ class ChatViewController: UIViewController {
         title = selectedFriendName
         
         chatView.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        chatView.contentWrapper.dataSource = self
+        chatView.contentWrapper.delegate = self
         
+        chatView.contentWrapper.separatorStyle = .none
         loadMessages()
+        
     }
     
     @objc func loadMessages() {
@@ -37,19 +41,30 @@ class ChatViewController: UIViewController {
         let receipentUser = selectedFriendEmail
         
         let chatID = helperObj.createChatDocumentID(user1: senderUser!, user2: receipentUser!)
-        
+        self.msgArray.removeAll()
         helperObj.getMessages(chatID: chatID) { (messages) in
             if let messageArray = messages {
                 for msg in messageArray {
                     self.msgArray.append(msg)
                 }
-                print("Hello: ")
-                print(self.msgArray)
                 
+                self.chatView.contentWrapper.reloadData()
+                self.scrollToBottom()
 //                DispatchQueue.main.async {
-//                               self.tableView.reloadData() // Reload table view data
-//                           }
+//                    print("yes!")
+//                    self.chatView.contentWrapper.reloadData()// Reload table view data
+//               }
             }
+        }
+    }
+    
+    @objc func scrollToBottom() {
+        let numberOfsections = chatView.contentWrapper.numberOfSections
+        let numberOfRows = chatView.contentWrapper.numberOfRows(inSection: numberOfsections - 1)
+        
+        if numberOfRows > 0 {
+            let indexPath = IndexPath(row: numberOfRows - 1, section: numberOfsections - 1)
+            chatView.contentWrapper.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     
@@ -68,6 +83,34 @@ class ChatViewController: UIViewController {
         helperObj.addMessages(chatID: chatID, senderUser: senderUser!, receipentUser: receipentUser!, textMsg: msgToSend)
 
         chatView.messageInputTextField.text = ""
+        
+//        chatView.contentWrapper.reloadData()
+        loadMessages()
     }
 
 }
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return msgArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chats", for: indexPath) as! ChatCellView
+        let msg = msgArray[indexPath.row]
+        //cell.setupMessage(with: msg)
+        if(msg.sender == UserDefaults.standard.string(forKey: "userToken")) {
+            cell.message.textAlignment = .right
+            cell.timestamp.textAlignment = .right
+            cell.message.textColor = .blue
+        } else {
+            cell.message.textAlignment = .left
+            cell.timestamp.textAlignment = .left
+            cell.message.textColor = .red
+        }
+        cell.message.text = msg.text
+        cell.timestamp.text = msg.timestamp
+        return cell
+    }
+}
+

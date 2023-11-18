@@ -18,10 +18,10 @@ class DbHelper {
     }
     
     func getMessages(chatID: String, completion: @escaping ([Message]?) -> Void) {
-        let chatCollection = database.collection("chats")
+        let chatCollection = database.collection("chats").document(chatID).collection("messages").order(by: "timestamp", descending: false)
         var msgArray: [Message] = []
         
-        chatCollection.document(chatID).collection("messages").getDocuments { (snapshot, error) in
+        chatCollection.getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error fetching documents: \(error)")
                 completion(nil) // Notify completion handler about the error
@@ -37,8 +37,8 @@ class DbHelper {
                         
                    
                 }
-                print("Done")
-//                print(msgArray[0].text)
+                
+                
                 completion(msgArray) // Return the fetched messages via completion handler
             }
         }
@@ -49,7 +49,7 @@ class DbHelper {
         let chatCollection = database.collection("chats")
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-YYYY HH:mm"
+        dateFormatter.dateFormat = "dd-MM-YYYY HH:mm:ss"
 
         let currentDate = Date()
         let formattedDate = dateFormatter.string(from: currentDate)
