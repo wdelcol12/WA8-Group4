@@ -80,7 +80,7 @@ class RegisterViewController: UIViewController {
                     
                     let alert = UIAlertController(title: "Registration Alert", message: "Successfully Registered", preferredStyle: UIAlertController.Style.alert)
 
-                    self.database.collection("users").document(email).setData([
+                    self.database.collection("users").document(email.lowercased()).setData([
                         "name": name.lowercased(),
                         "email": email.lowercased(),
                     ]) { err in
