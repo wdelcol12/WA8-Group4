@@ -345,6 +345,8 @@ class ChatView: UIView {
         //contentWrapper.backgroundColor = .white
         contentWrapper.register(ChatCellView.self, forCellReuseIdentifier: "chats")
         contentWrapper.translatesAutoresizingMaskIntoConstraints = false
+        contentWrapper.estimatedRowHeight = 100
+        contentWrapper.rowHeight = UITableView.automaticDimension
         self.addSubview(contentWrapper)
     }
     

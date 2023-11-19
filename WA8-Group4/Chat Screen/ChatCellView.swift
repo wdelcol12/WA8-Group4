@@ -39,7 +39,7 @@ class ChatCellView: UITableViewCell {
     
     func setupMessage(){
         message = UILabel()
-        message.font = UIFont.boldSystemFont(ofSize: 22)
+        message.font = UIFont.boldSystemFont(ofSize: 18)
         //message.text = msg.text
         message.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(message)
@@ -47,7 +47,7 @@ class ChatCellView: UITableViewCell {
     
     func setUpTimeStamp() {
         timestamp = UILabel()
-        timestamp.font = UIFont.systemFont(ofSize: 16)
+        timestamp.font = UIFont.systemFont(ofSize: 13)
         timestamp.textColor = .darkGray
         timestamp.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(timestamp)
@@ -66,12 +66,12 @@ class ChatCellView: UITableViewCell {
             message.heightAnchor.constraint(equalToConstant: 20),
             message.widthAnchor.constraint(equalTo: wrapperCellView.widthAnchor),
             
-            timestamp.topAnchor.constraint(equalTo: message.bottomAnchor, constant: 8),
+            timestamp.topAnchor.constraint(equalTo: message.bottomAnchor, constant: 10),
             timestamp.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 10),
             timestamp.heightAnchor.constraint(equalToConstant: 20),
             timestamp.widthAnchor.constraint(equalTo: wrapperCellView.widthAnchor),
             
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 85)
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 95)
             
         ])
         
