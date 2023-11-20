@@ -42,16 +42,41 @@ class ChatViewController: UIViewController {
         
         let chatID = helperObj.createChatDocumentID(user1: senderUser!, user2: receipentUser!)
         self.msgArray.removeAll()
-        helperObj.getMessages(chatID: chatID) { (messages) in
-            if let messageArray = messages {
-                for msg in messageArray {
-                    self.msgArray.append(msg)
-                }
+        
+        self.database.collection("chats")
+            .document(chatID)
+            .collection("messages")
+            .order(by:"timestamp", descending: false)
+            .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
                 
+                if let documents = querySnapshot?.documents{
+                    
+                    
+                    self.msgArray.removeAll()
+                    for document in documents{
+                        do {
+                            let msg = try document.data(as: Message.self)
+                            self.msgArray.append(msg)
+                            
+                        }catch {
+                            print(error)
+                        }
+                    }
+                }
                 self.chatView.contentWrapper.reloadData()
                 self.scrollToBottom()
             }
-        }
+            )
+//        helperObj.getMessages(chatID: chatID) { (messages) in
+//            if let messageArray = messages {
+//                for msg in messageArray {
+//                    self.msgArray.append(msg)
+//                }
+//                
+//                self.chatView.contentWrapper.reloadData()
+//                self.scrollToBottom()
+//            }
+//        }
     }
     
     @objc func scrollToBottom() {

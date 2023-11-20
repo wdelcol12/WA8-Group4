@@ -69,51 +69,107 @@ class MessengerViewController: UIViewController {
     
     @objc func createFriend(name: String, email: String){
         self.friends.removeAll()
+        
         let receipentUser = email
         let chatID = self.helperObj.createChatDocumentID(user1: self.senderUser, user2: receipentUser)
         
         //find last message
         var msgArray: [Message] = []
-
-        self.helperObj.getMessages(chatID: chatID) { (messages) in
-            if let messageArray = messages {
-                for msg in messageArray {
-                    print("should be here")
-                    msgArray.append(msg)
-                }
-                print("Hello: ")
-                print(msgArray)
-                var lastMessage: String?
-                var timestamp: String?
+        
+        self.database.collection("chats")
+            .document(chatID)
+            .collection("messages")
+            .order(by: "timestamp", descending:false)
+            .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
                 
-                if let last = msgArray.last {
-                    lastMessage = last.text
-                    timestamp = last.timestamp
-                    // Use the lastMessage here
-                    print("Last Message: \(String(describing: lastMessage))")
-                } else {
-                    // The array is empty
-                    lastMessage = ""
-                    timestamp = ""
-                }
-
-                if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
-                    let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
-                    print("Check: ", lastMessageText)
-                    self.friends.append(friend)
-
-                } else {
-                    // Handle the case where lastMessageText or lastMessageTimestamp is nil
-                    print("No last message available")
-                }
-                // Sort the friends array based on timestamp
-                self.friends.sort { (friend1, friend2) -> Bool in
-                    // Assuming timestamp is a String in the format of a date
-                    return friend1.time > friend2.time
-                }
-                self.msgView.tableViewMessages.reloadData()
-            }
-        }
+                if let documents = querySnapshot?.documents{
+                    
+                    
+                    msgArray.removeAll()
+                    
+                    for document in documents{
+                        
+                        
+                        do {
+                            let msg = try document.data(as: Message.self)
+                            msgArray.append(msg)
+                            
+                        }catch {
+                            print(error)
+                        }
+                    }
+                        
+                        var lastMessage: String?
+                        var timestamp: String?
+                        
+                        if let last = msgArray.last {
+                            lastMessage = last.text
+                            timestamp = last.timestamp
+                            // Use the lastMessage here
+                            print("Last Message: \(String(describing: lastMessage))")
+                        } else {
+                            // The array is empty
+                            lastMessage = ""
+                            timestamp = ""
+                        }
+                        
+                        if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
+                            let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
+                            print("Check: ", lastMessageText)
+                            self.friends.append(friend)
+                            
+                        } else {
+                            // Handle the case where lastMessageText or lastMessageTimestamp is nil
+                            print("No last message available")
+                        }
+                        // Sort the friends array based on timestamp
+                        self.friends.sort { (friend1, friend2) -> Bool in
+                            // Assuming timestamp is a String in the format of a date
+                            return friend1.time > friend2.time
+                        }
+                        self.msgView.tableViewMessages.reloadData()
+                    }
+            
+            } )
+//        self.helperObj.getMessages(chatID: chatID) { (messages) in
+//            if let messageArray = messages {
+//                for msg in messageArray {
+//                    print("should be here")
+//                    msgArray.append(msg)
+//                }
+//                print("Hello: ")
+//                print(msgArray)
+//                var lastMessage: String?
+//                var timestamp: String?
+//                
+//                if let last = msgArray.last {
+//                    lastMessage = last.text
+//                    timestamp = last.timestamp
+//                    // Use the lastMessage here
+//                    print("Last Message: \(String(describing: lastMessage))")
+//                } else {
+//                    // The array is empty
+//                    lastMessage = ""
+//                    timestamp = ""
+//                }
+//
+//                if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
+//                    let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
+//                    print("Check: ", lastMessageText)
+//                    self.friends.append(friend)
+//
+//                } else {
+//                    // Handle the case where lastMessageText or lastMessageTimestamp is nil
+//                    print("No last message available")
+//                }
+//                // Sort the friends array based on timestamp
+//                self.friends.sort { (friend1, friend2) -> Bool in
+//                    // Assuming timestamp is a String in the format of a date
+//                    return friend1.time > friend2.time
+//                }
+//                self.msgView.tableViewMessages.reloadData()
+//            }
+//        }
     }
     
     //Change from String to Chat Model
