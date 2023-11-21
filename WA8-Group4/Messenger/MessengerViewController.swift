@@ -117,6 +117,7 @@ class MessengerViewController: UIViewController {
                     if let lastMessageText = lastMessage, let lastMessageTimestamp = timestamp {
                         if let index = self.friends.firstIndex(where: { $0.email == email }) {
                             self.friends[index].lastMessage = lastMessageText
+                            self.friends[index].time = lastMessageTimestamp
                         } else {
                             let friend = Friend(name: name, lastMessage: lastMessageText, time: lastMessageTimestamp, email: email)
                             print("see 10: ", self.friends.count)
